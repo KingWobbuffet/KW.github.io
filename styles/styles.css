@@ -19,8 +19,8 @@ body {
     font-size: 0.938rem;
   }
   #game {
-    max-width: 31.25rem;
-    max-height: 18.75rem;
+    width: 40vw;
+    height: 20vh;
     color: #912121;
     padding: 10rem 0.625rem 0.625rem 0.625rem;
     margin-top: 1.875rem;
@@ -31,8 +31,8 @@ body {
   #background-game {
     width: 50vw;
     height: 50vh;
-    object-fit: scale-down;
-    position: absolute;
+    object-fit: cover;
+    position: relative;
     left: 20.650rem;
     right: 0;
     top: 8.75rem;
