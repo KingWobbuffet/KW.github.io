@@ -1,6 +1,6 @@
 #background-video {
-  width: 100%;
-  height: 100%;
+  width: 150%;
+  height: 150%;
   object-fit: fill;
   position: relative;
   z-index: -9;
@@ -15,7 +15,7 @@ body {
     font-size: 0.938rem;
   }
   #game {
-    width: 40vw;
+    width: 25vw;
     height: 20vh;
     color: #912121;
     padding: 10rem 0.625rem 0.625rem 0.625rem;
