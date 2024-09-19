@@ -15,16 +15,16 @@ body {
   #text {
     background-color: rgba(206, 189, 189, 0);
     color: rgb(250, 236, 236);
-    padding: 10px 50px 10px 30px;
-    font-size: 15px;
+    padding: 0.625rem 3.125rem 0.625rem 1.875rem;
+    font-size: 0.938rem;
   }
   #game {
-    max-width: 500px;
-    max-height: 300px;
+    max-width: 31.25rem;
+    max-height: 18.75rem;
     color: #912121;
-    padding: 160px 10px 10px 10px;
-    margin-top: 30px;
-    margin-bottom: 0px;
+    padding: 10rem 0.625rem 0.625rem 0.625rem;
+    margin-top: 1.875rem;
+    margin-bottom: 0;
     margin-left: auto;
     margin-right: auto;
   } 
@@ -33,15 +33,15 @@ body {
     height: 50vh;
     object-fit: cover;
     position: fixed;
-    left: 330px;
+    left: 20.625rem;
     right: 0;
-    top: 140px;
+    top: 8.75rem;
     bottom: 0;
     z-index: -8;
   }
   #controls, #stats {
     color: #0a0a23;
-    padding: 5px;
+    padding: 0.313rem;
   }
   #stats {
     text-align: center;
@@ -66,16 +66,16 @@ body {
     color: rgb(250, 196, 58);
   }
   #potions {
-    width: 15px;
-    height: 15px;
+    width: 0.938rem;
+    height: 0.938rem;
     position: relative;
-    top: 2px;
+    top: 0.125rem;
   }
   #gold {
-    width: 18px;
-    height: 18px;
+    width: 1.125rem;
+    height: 1.125rem;
     position: relative;
-    top: 2px;
+    top: 0.125rem;
   }
   #bagText {
     color: chartreuse;
@@ -83,46 +83,46 @@ body {
   }
   #monsterStats {
     display: none;
-    padding: 5px;
+    padding: 0.313rem;
     color: #ffffff;
     background: #b40b0be3;
     position: fixed;
     left: 36%;
     right: 36%;
-    top: 580px;
+    top: 36.25rem;
   }
   .stat {
-    padding-right: 10px;
+    padding-right: 0.625rem;
   }
   button {
     cursor: pointer;
     color: #0a0a23;
     background-color: #feac32;
     background-image: linear-gradient(#fecc4c, #ffac33);
-    border: 3px solid #feac32;
+    border: 0.188rem solid #feac32;
     text-align: center;
     display: inline-block;
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   #controls {
-    width: 420px;
-    height: 35px;
+    width: 26.25rem;
+    height: 2.188rem;
     text-align: center;
     position: relative;
-    left: 30px;
-    padding: 10px 40px 10px 0px;
+    left: 1.875rem;
+    padding:0.625rem 2.5rem 0.625rem 0;
   }
   #button4 {
     display: none;
   }
   #slimeImage {
-    max-width: 120px;
-    min-width: 70px;
-    max-height: 170px;
-    min-height: 120px;
+    max-width: 7.5rem;
+    min-width: 4.375rem;
+    max-height: 10.625rem;
+    min-height: 7.5rem;
     position: absolute;
-    top: 380px;
-    left: 620px;
+    top: 23.75rem;
+    left: 38.75rem;
     display: none;
     margin-top: 30px;
     margin-bottom: 0px;
