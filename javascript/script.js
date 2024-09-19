@@ -458,6 +458,8 @@ function chestLoot() {
 
 function lose() {
     update(locations[7]);
+    button2.style.display = "none";
+    button3.style.display = "none";
     slimeImage.style.display = "none";
     beastImage.style.display = "none";
     hydraImage.style.display = "none";
