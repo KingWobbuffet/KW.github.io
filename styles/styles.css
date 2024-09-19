@@ -31,7 +31,7 @@ body {
   #background-game {
     width: 50vw;
     height: 50vh;
-    object-fit: cover;
+    object-fit: fill;
     position: fixed;
     left: 20.625rem;
     right: 0;
