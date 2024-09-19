@@ -2,11 +2,11 @@
   width: 100%;
   height: 100%;
   object-fit: fill;
-  position: relative;
+  position: absolute;
   z-index: -9;
 }
 body {
-  background: rgba(148, 255, 109, 33);
+  background: rgba(148, 109, 109, 0);
   }
   #text {
     background-color: rgba(206, 189, 189, 0);
@@ -26,7 +26,7 @@ body {
   #background-game {
     width: 50vw;
     height: 50vh;
-    object-fit: fill;
+    object-fit: contain;
     position: relative;
     left: 0.650rem;
     right: 0;
