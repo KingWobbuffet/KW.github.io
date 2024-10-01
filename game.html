@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Added for responsiveness -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <title>Dungeon Runner</title>
+</head>
+<body>
+    <video id="background-video" autoplay loop muted>
+        <source src="media/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <img id="background-game" src="media/sign.png" alt="Dungeon Runner Background" />
+
+    <div id="relics">
+        <input type="image" id="relic" src="media/backpack.png" alt="Backpack" />
+    </div>
+
+    <main id="game">
+        <section id="stats">
+            <span class="stat">XP: <strong><span id="xpText">0</span></strong></span>
+            <span class="stat">Level: <strong><span id="levelText">1</span></strong></span>
+            <span class="stat">Health: <span id="healthBar"></span><strong><span id="healthText">100</span></strong>/<strong><span id="maxHealthText">100</span></strong></span></span>
+            <span class="stat"><img id="gold" src="media/gold.png" alt="Gold" /> <strong><span id="goldText">50</span></strong></span>
+            <span class="stat"><img id="potions" src="media/potion.png" alt="Potion" /><strong><span id="bagText">2</span></strong></span>
+        </section>
+
+        <section id="controls">
+            <button id="button1">Shop</button>
+            <button id="button2">Dungeon</button>
+            <button id="button3">Fight Dragon</button>
+            <button id="button4">Buy Potions</button>
+        </section>
+
+        <section id="monsterStats">
+            <span class="stat">Monster Name: <strong><span id="monsterName"></span></strong></span>
+            <span class="stat">Health: <strong><span id="monsterHealth"></span></strong></span>
+        </section>
+
+        <section id="text">
+            <p>Welcome to the world of Licheno, you are a young traveler with dreams and aspirations to become a knight within the king's guard. You are currently stood outside of the town Treeno, next to the south west river. Can you defeat Sangrine the Magic Hydra? Or will you die with the rest?</p>
+        </section>
+
+        <section id="pic">
+            <img id="slimeImage" src="https://static.tvtropes.org/pmwiki/pub/images/slimegalhghtransparent.png" alt="Slime" />
+            <img id="beastImage" src="https://alipheese.weebly.com/uploads/3/7/0/1/37010985/4059687.png?340" alt="Beast" />
+            <img id="hydraImage" src="https://i.ytimg.com/vi/6M-TPLI6ULw/maxresdefault.jpg" alt="Hydra" />
+            <img id="mimicImage" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f35fb770-7717-41ec-a9d6-0f1d73aba11a/ddoy4vz-aa689e9f-0881-47aa-bfe3-8d74e5637b7c.png" alt="Mimic" />
+        </section>
+    </main>
+
+    <script src="javascript/script.js"></script>
+</body>
+</html>

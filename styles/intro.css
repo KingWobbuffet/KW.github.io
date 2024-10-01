@@ -1,0 +1,33 @@
+.main {
+    object-fit: cover;
+    z-index: -1;
+    width: 110%;
+    height: 110%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.title {
+    width: 45%;
+    height: 40%;
+    position: absolute;
+}
+.button {
+    display: inline-block;
+    width: 30%;
+    height: 10%;
+    position: absolute;
+    margin: 0 auto;
+    bottom: 10vh;
+    right: 10vh;
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    cursor: pointer; /* Change cursor to pointer on hover */
+}
+.button:hover {
+    background-color: #191a194f; /* Darker green on hover */
+}
+body {
+    cursor: url('https://github.com/KingWobbuffet/KW.github.io/blob/main/media/cursor.png'), auto; /* Local file reference */
+}

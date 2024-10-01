@@ -11,7 +11,6 @@ let fighting;
 let monsterHealth;
 let inventory = ["stick"];
 
-
 /* this help js find and edit things on the html file */
 
 const button1 = document.querySelector("#button1");
@@ -156,15 +155,21 @@ button4.onclick = buyPotion;
 function update(location) {
     monsterStats.style.display = "none";
     button4.style.display = "none";
-    button1.innerText = location["button text"][0];
-    button2.innerText = location["button text"][1];
-    button3.innerText = location["button text"][2];
-    button4.innerText = location["button text"][3];
-    button1.onclick = location["button functions"][0];
-    button2.onclick = location["button functions"][1];
-    button3.onclick = location["button functions"][2];
-    button4.onclick = location["button functions"][3];
     text.innerHTML = location.text; 
+    for (let i = 0; i < location["button text"].length; i++) {
+      const button = eval(`button${i + 1}`);
+      button.innerText = location["button text"][i];
+      button.onclick = location["button functions"][i];
+  }
+}
+
+function updateUI() {
+  goldText.innerText = gold;
+  healthText.innerText = health;
+  xpText.innerText = xp;
+  maxHealthText.innerText = maxHealth;
+  bagText.innerText = bag;
+  levelText.innerText = level;
 }
 
 backpack.addEventListener("click", openbackpack);
@@ -185,23 +190,18 @@ function openbackpack() {
         };
 }
 
-
 function levelUp() {
-  let xpLevel = xp - 15 * level;
   let nextLevel = 15 * level - xp;
-  if (xp >= 15 * level) {
-    level++;
-    xp = xpLevel;
-    maxHealth += 10;
-    health = maxHealth;
-    levelText.innerText = level;
-    healthText.innerText = health;
-    xpText.innerText = xp;
-    maxHealthText.innerText = maxHealth;
-    text.innerText += " You leveled up to level " + level + "! ";
-  } else {
-    text.innerText += " You need " + nextLevel + " xp to level up! ";
+  if (xp < 15 * level) {
+    text.innerText += ` You need ${nextLevel} xp to level up! `;
+    return; // Early return if not enough XP
   }
+  level++;
+  xp -= 15 * level; // Corrected XP calculation
+  maxHealth += 10;
+  health = maxHealth;
+  updateUI();
+  text.innerText += ` You leveled up to level ${level}! `;
 }
 
 function goHome() {
@@ -217,7 +217,7 @@ function goHome() {
 function rest() {
   update(locations[0]);
   health = maxHealth;
-  healthText.innerText = health;
+  updateUI();
 }
 
 function shop() {
@@ -256,11 +256,11 @@ function buyWeapon() {
        if (gold >= 120) {
            gold -= 120;
            currentWeapon++;
-           goldText.innerText = gold;
+           updateUI();
            let newWeapon = weapons[currentWeapon].name;
-           text.innerText = "You now have a " + newWeapon + ".";
+           text.innerText = `You now have a ${newWeapon}.`;
            inventory.push(newWeapon);
-           text.innerText += " In your inventory you have: " + inventory;
+           text.innerText += ` In your inventory you have: ${inventory}`;
         } else {
            text.innerText = "ShopKeeper: HEY ARE YOU TRYING TO ROB ME! MAKING WEAPONS ISNT CHEAP YOU KNOW! Come back when you have enough gold!";
       }
@@ -276,8 +276,7 @@ function buyPotion() {
     if (bag < fullBag) {
       gold -= 25;
       bag++;
-      goldText.innerText = gold;
-      bagText.innerText = bag;
+      updateUI();
     } else {
       text.innerText = "Your bag seems to be full."
     }
@@ -289,13 +288,10 @@ function usePotion() {
   if (bag > 0) {
     if ( health < maxHealth) {
       bag--;
-      bagText.innerText = bag;
      if (health + 25 <= maxHealth) {
       health += 25;
-      healthText.innerText = health;
     } else {
       health = maxHealth;
-      healthText.innerText = health;
     }
     text.innerText = "You reached in your bag and pull out a potion and healed for 25 health.";
     } else {
@@ -304,6 +300,7 @@ function usePotion() {
   } else {
     text.innerText = "You don't have any potions in your bag.";
   }
+  updateUI();
 }
 
 function sellWeapon() {
@@ -311,8 +308,8 @@ function sellWeapon() {
         gold += 15;
         goldText.innerText = gold;
         let currentWeapon = inventory.shift();
-        text.innerText = "You sold a " + currentWeapon + ".";
-        text.innerText += " You looked inside your backpack you have: " + inventory;
+        text.innerText = `You sold a ${currentWeapon}.`;
+        text.innerText += ` You looked inside your backpack you have: ${inventory}`;
     } else {
         text.innerText = "I don't think you should your only weapon.";
     }
@@ -350,7 +347,7 @@ function fight() {
   monsterStats.style.display = "block"; // this stops the css rule tthat hide the monsters stats
   monsterName.innerText = monsters[fighting].name;
   monsterHealthText.innerText = monsters[fighting].health;
-  text.innerText += " " + monsters[fighting].name + ".";
+  text.innerText += ` ${monsters[fighting].name}.`;
   button4.style.display = "inline-block";
 }
 
@@ -363,7 +360,7 @@ function attack() {
       }
      if (monsterHealth > 0) {
     health -= getMonsterAttackValue(monsters[fighting].level);
-    text.innerText = "The " + monsters[fighting].name + " attacks.";
+    text.innerText = `The ${monsters[fighting].name} attacks.`;
        } 
     if (health <= 0) {
        lose();
@@ -379,7 +376,7 @@ function attack() {
     healthText.innerText = health;
     monsterHealthText.innerText = monsterHealth;
       if (Math.random() <= .1 && currentWeapon > 0) {
-        text.innerText += " Your " + inventory.pop() + " breaks.";
+        text.innerText += ` Your ${inventory.pop()} breaks.`;
         currentWeapon--;
       }
 }
@@ -395,7 +392,7 @@ function getMonsterAttackValue(level) {
 }
 
 function dodge() {
-    text.innerText = "You dodge the attack from the " + monsters[fighting].name;
+    text.innerText = `You dodge the attack from the ${monsters[fighting].name}`;
 }
 
 function defeatMonster() {
@@ -405,8 +402,7 @@ function defeatMonster() {
     gold += addGold;
     addXp += monsters[fighting].level;
     xp += addXp;
-    goldText.innerText = gold;
-    xpText.innerText = xp;
+    updateUI();
     slimeImage.style.display = "none";
     beastImage.style.display = "none";
     hydraImage.style.display = "none";
@@ -418,8 +414,8 @@ function defeatMonster() {
     } else if (fighting <= 2) {
       winGame();
     }
-    text.innerText += " You found " + addGold + " gold ";
-    text.innerText += " and gained " + addXp + " xp! ";
+    text.innerText += ` You found ${addGold} gold `;
+    text.innerText += ` and gained ${addXp} xp! `;
     levelUp();
 }
 function chestOrMimic() {
@@ -438,10 +434,9 @@ function defeatMimic() {
   gold += addGold;
   addXp += Math.floor(monsters[fighting].level * 15);
   xp += addXp;
-  goldText.innerText = gold;
-  text.innerText += " You found " + addGold + " gold ";
-  xpText.innerText = xp;
-  text.innerText += " and gained " + addXp + " xp! ";
+  updateUI();
+  text.innerText += ` You found ${addGold} gold `;
+  text.innerText += ` and gained ${addXp} xp! `;
   mimicImage.style.display = "none";
   levelUp();
 }
@@ -450,9 +445,9 @@ function chestLoot() {
   addGold += Math.floor(Math.random() * 251);
   update(locations[10]);
   text.innerText = " You see a chest and open it. ";
-  text.innerText += " You found " + addGold + " gold! ";
+  text.innerText += ` You found ${addGold} gold! `;
   gold += addGold;
-  goldText.innerText = gold;
+  updateUI();
   text.innerText += " Looks like there are more creatures. ";
 }
 
@@ -475,11 +470,7 @@ function restart() {
     inventory = ["stick"];
     level = 1;
     bag = 0;
-    goldText.innerText = gold;
-    healthText.innerText = health;
-    xpText.innerText = xp;
-    levelText.innerText = level;
-    bagText.innerText = bag;
+    updateUI()
     goHome();
 }
 
@@ -511,13 +502,26 @@ function pick(guess) {
     if (numbers.includes(guess)) {
       text.innerText += "Right! You win 20 gold!";
       gold += 20;
-      goldText.innerText = gold;
+      updateUI();
     } else {
       text.innerText += "Wrong! You lose 10 health!";
       health -= 10;
-      healthText.innerText = health;
+      updateUI();
       if (health <= 0) {
         lose()
       }
     }
+}
+
+function typeWriterEffect(text, element, speed) {
+  let i = 0;
+  element.innerText = ""; // Clear the current text
+  function type() {
+      if (i < text.length) {
+          element.innerText += text.charAt(i);
+          i++;
+          setTimeout(type, speed); // Call the type function again after the speed
+      }
+  }
+  type(); // Start typing
 }
