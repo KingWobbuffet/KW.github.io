@@ -8,6 +8,7 @@
   --font-color-light: rgb(250, 236, 236);
 }
 #background-video {
+<<<<<<< HEAD
   width: 100%;
   height: 100%;
   object-fit: cover; /* Change to 'cover' for better scaling */
@@ -69,6 +70,65 @@ body {
   gap: 1rem; 
   margin: 0 auto; /* Centers the text */
 }
+=======
+  width: 100vw;
+  height: 100vh;
+  object-fit: fill;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: -9;
+}
+body {
+  background: rgba(148, 109, 109, 0);
+  }
+  #text {
+    background-color: rgba(206, 189, 189, 0);
+    color: rgb(250, 236, 236);
+    position: relative;
+    padding: 0.625rem 1.875rem 0.625rem 1.875rem;
+    font-size: 0.875rem;
+    height: 0.625rem
+  }
+  #game {
+    width: 40vw;
+    height: 24vh;
+    color: #912121;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0.625rem 0.625rem 0.625rem 0.625rem;
+    margin-top: 1.875rem;
+    margin-bottom: 0;
+    margin-right: auto;
+  } 
+  #background-game {
+    width: 60vw;
+    height: 50vh;
+    object-fit: contain;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -8;
+  }
+  #controls, #stats {
+    color: #0a0a23;
+    padding: 0.313rem;
+  }
+  #controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  #stats {
+    text-align: center;
+  }
+>>>>>>> 1948058b82f67fd164c605f4a1ec709c33cca4e9
   #xpText {
     color: aquamarine;
   }
