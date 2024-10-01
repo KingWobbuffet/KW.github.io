@@ -23,15 +23,18 @@ body {
   background-color: var(--background-color);
   color: var(--font-color-light);
   display: flex;
+  height: 20vh;
   justify-content: center;
   align-items: center;
   padding: 0.625rem 1.875rem;
+  position: fixed;
+  bottom: 0;
 }
 #game {
-  width: 40vw;
-  height: auto; /* Change to auto for better height management */
+  width: 42vw;
+  height: 32vh; /* Change to auto for better height management */
   position: absolute;
-  top: 50%;
+  top: 49%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -55,12 +58,17 @@ body {
   justify-content: center; /* Center buttons horizontally */
   align-items: center; /* Center buttons vertically */
   gap: 0.5rem; /* Space between buttons */
-  width: 60%; /* Take full width */
-  overflow: hidden; /* Ensure text is hidden initially */
-  white-space: nowrap; /* Prevent wrapping */
   margin: 0 auto; /* Centers the text */
+  top: 15%;
+  left: -1%;
+  max-width: 90%;
 }
-#stats {
+#stats { 
+  position: fixed;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-wrap: nowrap;
   text-align: center; 
   display: flex; /* Enable Flexbox */
   flex-direction: row; /* Arrange buttons in a row */
@@ -130,12 +138,8 @@ body {
     font-size: 0.75rem;
   }
   #controls {
-    width: 26.25rem;
-    height: 2.188rem;
     text-align: center;
     position: relative;
-    left: 1.875rem;
-    padding:1rem 2.5rem 0.625rem 0;
   }
   #button4 {
     display: none;
